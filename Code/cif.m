@@ -1,7 +1,7 @@
 function [lambda] = cif(t,H,mu,alpha,beta)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Consider: lambda^{*}(t) = lambda_0 + alpha*sume^{-beta(t-t_j)}
-%h--the history of the process
+%H--the history of the process
 %mu--the parameter of lambda_0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 lambda = mu*ones(length(t),1) ;
