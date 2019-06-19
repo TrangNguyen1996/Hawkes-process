@@ -1,7 +1,7 @@
 rng(2);
 lambda = @(t) 2 + sin(t);M = 4;T = 4*pi;
 [A,Ay,R,Ry] = InhomogeneousPoissonProcess(T, lambda, M);
-%Plot
+
 hold on;
 t = 0:0.01:T;
 xlabel('$t$','interpreter','latex');

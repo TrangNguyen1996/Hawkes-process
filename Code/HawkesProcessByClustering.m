@@ -1,7 +1,7 @@
 function HawkesProcessByClustering(T,lambda,alpha,beta)
     k = poissrnd(lambda*T);
     C = sort(T*rand(k,1));
-    D = poissrnd(alpha/beta, k, 1);
+    D = poissrnd(alpha/beta,k,1);
     allDes = [];
     hold on;
     colorOrder = get(gca,'ColorOrder');
