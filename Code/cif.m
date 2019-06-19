@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function lambda = cif(t,H,lambda_0,alpha,beta)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Consider: lambda^{*}(t) = lambda_0 + alpha*sume^{-beta(t-t_j)}
@@ -5,6 +6,15 @@ function lambda = cif(t,H,lambda_0,alpha,beta)
 % mu--the parameter of lambda_0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 lambda = lambda_0*ones(length(t),1) ;
+=======
+function [lambda] = cif(t,H,mu,alpha,beta)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Consider: lambda^{*}(t) = lambda_0 + alpha*sume^{-beta(t-t_j)}
+%H--the history of the process
+%mu--the parameter of lambda_0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+lambda = mu*ones(length(t),1) ;
+>>>>>>> 4e0a8b65628f4661770f85fa9607ad0cb5b810de
 for i = 1 : length(t)
     h = H;
     h = h(h < t(i)) ;
