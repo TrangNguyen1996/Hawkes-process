@@ -1,0 +1,283 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[left=3.50cm, right=2.00cm, top=3.00cm, bottom=3.50cm]{geometry}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\footnotesize}{\fontsize{13pt}{1}\selectfont}
+%\usepackage{sectsty}
+%\chapterfont{\centering}
+
+\usepackage{titlesec}
+%\titleformat{\chapter}
+%{\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{0.8cm}{}
+%\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+
+\usepackage[titletoc]{appendix} 
+\usepackage{empheq}
+\usepackage{tikz} %draw figure
+\usetikzlibrary{shadows,arrows,positioning}
+\usepackage{amsthm}             
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{mathtools,etoolbox}
+\usepackage{makecell}
+\usepackage{tabularx,colortbl}
+\usepackage{float} % force the figure to be shown at the location
+\usepackage{cases}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{url} % hyperref works too
+\usepackage[caption = false]{subfig}
+\usepackage{longtable}
+\usepackage{pgfplots}
+\usetikzlibrary{plotmarks}
+%\usepackage{wrapfig}
+%\usepackage{braket}
+%\usepackage{tabto}
+%\usepackage{mathrsfs}
+%\usepackage{relsize}
+%\usepackage{mdframed}
+%\usepackage{lipsum}
+\usepackage{hyphenat}%prevent hyphenation of table of contents 
+\usepackage{color}
+\usepackage[final]{pdfpages} % PDF
+\urlstyle{same}
+\allowdisplaybreaks
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	filecolor=black,
+	urlcolor=black,
+}
+\usepackage{scalefnt}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+	frame=single,
+	stringstyle=\color{red},  
+%stringstyle=\color{black}, 
+	language=Matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+%	keywordstyle=\color{black},
+%commentstyle=\color{black},
+	breaklines=true,
+	%	breakatwhitespace=true,
+	tabsize=3
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\lhead{\leftmark}
+\fancypagestyle{plain}{%
+	\renewcommand{\headrulewidth}{0pt}%
+	\fancyhf{}%
+	\fancyfoot[C]{\thepage}%
+}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\graphicspath{{Figure/}} % include path of figure
+
+%% Delimiters
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}  % abs
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}  % Norm
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle} % Inner product
+
+%% New commands for sets
+%\newcommand{\R}{{\mathbb{R}} 
+
+
+%Theorem
+\newtheorem{theorem}{Theorem}[chapter]
+
+\newtheorem{definition}{Definition}[chapter]
+
+\newtheorem{lemma}{Lemma}[chapter]
+
+\newtheorem{remark}{Remark}[chapter]
+
+\newtheorem{proposition}{Proposition}[chapter]
+
+\newtheorem{example}{Example}[chapter]
+
+\newtheorem{properties}{Properties}[chapter]
+
+\newtheorem{corollary}{Corollary}[chapter]
+
+%\newtheorem*{solution}{Solution}
+
+
+%\newcommand{\theoremautorefname}{Theorem}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\exampleautorefname}{Example}
+\newcommand{\propertiesautorefnam}{Properties}
+\newcommand{\corollaryautorefnam}{Corollary}
+%\newcommand{\solutionautorename}{Solution}
+
+\usepackage{algorithm,algpseudocode,float}
+\floatname{algorithm}{Algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{INPUT:}}
+\renewcommand{\algorithmicensure}{\textbf{OUTPUT:}}
+
+\usepackage[backend = bibtex, sorting = nty, style = ieee]{biblatex}
+\addbibresource{References.bib}
+
+
+\makeatletter
+\newenvironment{breakablealgorithm}
+{% \begin{breakablealgorithm}
+	\begin{center}
+		\refstepcounter{algorithm}% New algorithm
+		\hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+		\renewcommand{\caption}[2][\relax]{% Make a new \caption
+			{\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+			\ifx\relax##1\relax % #1 is \relax
+			\addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+			\else % #1 is not \relax
+			\addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+			\fi
+			\kern2pt\hrule\kern2pt
+		}
+	}{% \end{breakablealgorithm}
+		\kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+	\end{center}
+}
+\makeatother
+
+\makeatletter
+\newcommand\appendix@chapter[1]{%
+	\refstepcounter{chapter}%
+	\def\app@ct{Appendix \@Alph\c@chapter: #1}
+	\orig@chapter*{\app@ct}%
+	\markboth{\MakeUppercase{\app@ct}}{\MakeUppercase{\app@ct}}
+	\addcontentsline{toc}{chapter}{\app@ct}%
+}
+\let\orig@chapter\chapter
+\g@addto@macro\appendix{\let\chapter\appendix@chapter}
+\makeatother
+
+\makeatletter
+\DeclareRobustCommand*{\bfseries}{%
+	\not@math@alphabet\bfseries\mathbf
+	\fontseries\bfdefault\selectfont
+	\boldmath
+}
+\makeatother
+
+
+\usepackage{smartdiagram}
+\usetikzlibrary{arrows}
+\usesmartdiagramlibrary{additions}
+\usetikzlibrary{shadows,positioning}
+\colorlet{colD}{red!40}
+\colorlet{colIP}{cyan!40}
+\colorlet{colV}{blue!40}
+\colorlet{colBorder}{gray!70}
+
+\tikzset
+{mybox/.style=
+	{rectangle,rounded corners,drop shadow,minimum height=1cm,
+		minimum width=3cm,align=center,fill=#1,draw=colBorder,line width=1pt
+	},
+	myarrow/.style=
+	{draw=#1,line width=3pt,-stealth,rounded corners
+	},
+	mylabel/.style={text=#1}
+}
+
+\smartdiagramset{description title width=2cm, 
+	description title text width=1.75cm,
+	descriptive items y sep=2,
+	description text width=12cm,
+	module minimum height=1.4cm,
+}
+
+%\usetikzlibrary{shapes.symbols}
+
+\tikzset{description title/.append style={
+		signal, 
+		signal to=south, 
+		signal from=north,
+		yshift=-0.65cm,
+	}
+}
+
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\usepackage{makeidx}
+
+\usepackage{mathrsfs}
+\newsavebox\foobox
+\newlength{\foodim}
+\newcommand{\slantbox}[2][0]{\mbox{%
+		\sbox{\foobox}{#2}%
+		\foodim=#1\wd\foobox
+		\hskip \wd\foobox
+		\hskip -0.5\foodim
+		\pdfsave
+		\pdfsetmatrix{1 0 #1 1}%
+		\llap{\usebox{\foobox}}%
+		\pdfrestore
+		\hskip 0.5\foodim
+}}
+\def\Laplace{\slantbox[-.45]{$\mathscr{L}$}}
+
+\usepackage{mathabx}
+
+\newsavebox{\accentbox}
+\newcommand{\compositeaccents}[2]{%
+	\sbox\accentbox{$#2$}#1{\usebox\accentbox}}
+
+\begin{document}
+	\include{Cover}
+
+	\tableofcontents 
+	\thispagestyle{empty}
+	\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+%	\listoftables
+%	\thispagestyle{empty}
+
+	\listoffigures
+	\thispagestyle{empty}
+    \addtocontents{lof}{\protect\thispagestyle{empty}}
+	
+
+	\listofalgorithms
+	\thispagestyle{empty}
+	
+	\newpage
+	\pagenumbering{arabic}
+
+	\include{Introduction}
+	\include{Knowledge}
+	\include{Hawkes}
+	\include{Simulation}
+	\include{Applications}
+	\include{Conclusion}
+	
+	\renewcommand{\bibname}{References}
+	\addcontentsline{toc}{chapter}{References}
+	\printbibliography
+\end{document}
